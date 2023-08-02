@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author:
+    - Zahary Karadjov <zahary@status.im>
+    - Jakub Sokołowski <zahary@status.im>
+  description: Deploy and setup Lido Keys API
+  company: Status.im
+  license: MIT
+  min_ansible_version: 1.19
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+  dependencies: []

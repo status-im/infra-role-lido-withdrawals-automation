@@ -1,0 +1,36 @@
+---
+
+lido_withdrawals_automation_service_name: 'lido-withdrawals-automation'
+lido_withdrawals_automation_service_path: '/docker/{{ lido_withdrawals_automation_service_name}}'
+lido_withdrawals_automation_compose_file: '{{ lido_withdrawals_automation_service_path }}/docker-compose.yml'
+lido_withdrawals_automation_dockerfile: '{{ lido_withdrawals_automation_service_path }}/Dockerfile'
+
+# This role assumes that there will a lido-ejector deployed on the same host
+ejector_service_name: 'ejector'
+ejector_service_path: '/docker/{{ ejector_service_name}}'
+
+# Variables used during the build of the Lido withdrawals automation container
+lido_withdrawals_automation_cont_name: '{{ lido_withdrawals_automation_service_name }}'
+# lido_withdrawals_automation_cont_vol: '{{ lido_withdrawals_automation_service_path }}/app'
+lido_withdrawals_automation_git_repository: https://github.com/status-im/lido-withdrawals-automations
+node_version: 20
+  
+# The variables below control the behavior of the withdrawals automation tool.
+#
+# You must define at least one of the "remote_signer_url" or "key_manager_urls" variables.
+# If the specified configuration is incomplete, the container will exit immediately with the exit code 130.
+
+percentage: 10
+kapi_url: ""
+remote_signer_url: ""
+key_manager_urls: "" # comma-separated list of URLs
+password: ""
+output_folder: /tmp/output
+operator_id: 1 # Make sure to specify this
+beacon_node_url: http://localhost:5052
+module_id: 1
+
+# general container management
+compose_recreate: 'smart'
+compose_state: 'present'
+compose_restart: false

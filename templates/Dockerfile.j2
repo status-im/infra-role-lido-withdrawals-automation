@@ -1,0 +1,11 @@
+FROM node:{{node_version}}
+
+WORKDIR /app
+
+RUN git clone {{lido_withdrawals_automation_git_repository}} .
+
+RUN npm install
+
+RUN mkdir {{output_folder}}
+
+CMD ["npm", "start"]

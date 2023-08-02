@@ -1,0 +1,21 @@
+---
+version: '3.7'
+services:
+  app:
+    container_name: {{lido_withdrawals_automation_cont_name}}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    environment:
+      - PERCENTAGE={{percentage}}
+      - KAPI_URL={{kapi_url}}
+      - REMOTE_SIGNER_URL={{remote_signer_url}}
+      - KEY_MANAGER_URLS={{key_manager_urls}}
+      - PASSWORD={{password}}
+      - OUTPUT_FOLDER={{output_folder}}
+      - OPERATOR_ID={{operator_id}}
+      - BEACON_NODE_URL={{beacon_node_url}}
+      - MODULE_ID={{module_id}}
+    volumes:
+      - ~{{output_folder}}:/messages

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script start the `lido-withdrawals-automation` tool in the container.
+# Wait for it to complete and then restart `Ejector` container.
+
+cd {{lido_withdrawals_automation_service_path}}
+docker compose up
+
+cd {{ejector_service_path}}
+docker compose restart

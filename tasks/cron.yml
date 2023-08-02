@@ -1,0 +1,7 @@
+---
+- name: LIDO-WITHDRAWALS-AUTOMATION | Create cronjob
+  cron: 
+    name: "Start the lido-withdrawals-automation and restart the ejector container"
+    special_time: daily
+    user: 'dockremap'
+    job: '/tmp/lido-withdrawals-automation.sh'

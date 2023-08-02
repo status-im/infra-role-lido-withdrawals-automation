@@ -1,0 +1,22 @@
+---
+- name: LIDO-WITHDRAWALS-AUTOMATION | Create docker directory
+  file:
+    path: '{{ lido_withdrawals_automation_service_path }}'
+    state: directory
+    owner: 'dockremap'
+    group: 'docker'
+    recurse: true
+
+- name: LIDO-WITHDRAWALS-AUTOMATION | Create script file
+  template:
+    src: '../templates/containers.sh.j2'
+    dest: '/tmp/lido-withdrawals-automation.sh'
+    mode: a+x
+
+# - name: LIDO-WITHDRAWALS-AUTOMATION | Create container directory
+#   file:
+#     path: '{{ lido_withdrawals_automation_cont_vol }}'
+#     state: directory
+#     owner: 'dockremap'
+#     group: 'docker'
+#     recurse: true
